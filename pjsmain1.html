@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>
+            Home -The Mega Cart
+        </title>
+        <h1>Dear <b id="cname">John Doe</b> Welcome to Megacart</h1>
+    </head>
+
+    <body>
+        <script>
+            let wname = localStorage.getItem("user");
+            console.log(wname);
+            window.onload = function () {
+                document.getElementById("cname").innerHTML= wname;
+                let d = new Date();
+                console.log(d);
+                document.getElementById("datee").innerHTML= d;
+            }
+            var bag = [];
+            function imgclick(type) {
+                var obj = {};
+                if (type == "cloth") {
+                    obj.itemName = "Clothing";
+                    obj.image ="./images/clothing.jpg";
+                    obj.cost = 2000;
+                    obj.delivery = "3-5 days";
+                    bag.push(obj);
+                    localStorage.setItem("bag",JSON.stringify(bag));
+                }
+                else if (type == "beauty") {
+                    obj.itemName ="Beauty & health"; 
+                    obj.image - "./images/health.jpg";
+                    obj.cost = 2500;
+                    obj.delivery = "1-2 days"; 
+                    bag.push(obj);
+                    localStorage.setItem("bag",JSON.stringify(bag));
+                }
+                else if (type == "foot") {
+                    obj.itemName = "Footwear";
+                    obj.image = "./images/footwear.jpg";
+                    obj.cost = 3000;
+                    obj.delivery = "3-4 days";
+                    bag.push(obj);
+                    localStorage.setItem("bag",JSON.stringify(bag));
+                }
+                else if (type=="bag") {
+                    obj.itemName = "School Bags";
+                    obj.image = "./images/school.jpg";
+                    obj.cost = 4000;
+                    obj.delivery = "4-5 days"; 
+                    bag.push(obj);
+                    localStorage.setItem("bag",JSON.stringify(bag));
+                }
+            }
+            function logout() {
+                window.open('pjslogin1.html');
+                localStorage.removeItem("user");
+                localStorage.removeItem("bag");
+            }
+            function gotocart() {
+                window.open('pjsbuyitem.html')
+            }
+        </script>
+        <style>
+            table,tr,td {
+                border: 1px black solid;
+                }
+                body {
+                    background: coral;
+                    text-align:center;
+                }
+                #tab {
+                    margin-left: auto; 
+                    margin-right: auto;
+                }
+                #datee {
+                    position: absolute;
+                    top: -6px; 
+                    right: 18px;
+                }
+                #logout {
+                    position: absolute;
+                    top: 4px; 
+                    left:10px;
+                } 
+        </style>
+        <table id="tab">
+            <p id="datee"></p>
+            <caption><b>Please click on an item to add it to the cart !!</b></caption>
+            <tr>
+                <td onclick="imgclick('cloth')"> 
+                    Clothing <img src="/images/clothing.jpg" alt="image not available">
+                </td>
+                <td onclick="imgclick('beauty')"> 
+                    Beauty & health <img src="./images/health.jpg" alt="image not available">
+                </td>
+            <tr>
+                <td onclick="imgclick('foot')">
+                    Footwear <img src="./images/footwear.jpg" alt="image not available">
+                </td>
+                <td onclick="imgclick('bag')">
+                    School Bags <img src="./images/school.jpg" alt="image not available">
+                </td>
+            </tr>
+        </table>
+        <br><input type="submit" value="click here to view cart" onclick="gotocart()"> 
+        <input type="submit" value="logout" id="logout" onclick="logout()">
+    </body>
+    </html>

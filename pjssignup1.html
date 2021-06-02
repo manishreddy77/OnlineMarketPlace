@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>
+            Signup - The Mega Cart
+        </title>
+        <h1 id="heading">The Mega Cart</h1>
+    </head>
+    <style>
+        body {
+            background-color: teal;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            text-align: center;
+        }
+    </style>
+    <body>
+        <form action="pjslogin1.html">
+            <div class="login">
+                Enter Userid: <input type="text" placeholder="enter userid" id="uname"  minlength="6" maxlength="18"required> <br><br>
+                Enter Email: <input type="email" id="email" placeholder="enter email" required> <br><br>
+                Enter Phone Number: <input type="tel" id="ph"  pattern="[0-9]{10}" placeholder="enter Phone Number" required> <br><br>
+                Enter Password: <input type="password" placeholder="enter password" id="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and
+                lowercase letter, and at least 8 or more characters" required> <br> <br>
+                Confirm Password: <input type="password"
+                placeholder="enter password" id="pass2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more
+                characters" required> <br><br> 
+                <input type="submit" value="Sign Up" onclick="return validate()"> <br><br>
+            </div>
+        </form>
+        <script type="text/javascript">
+            function validate() {
+                let pass=document.getElementById("pass").value;
+                let cpass=document.getElementById("pass2").value; 
+                if(pass!= cpass) {
+                    alert("passwords do not match");
+                    return false;
+                }
+                let uid=document.getElementById("uname").value;
+                let credentials={[uid]:pass};
+                let previousCred=localStorage.getItem("cred"); 
+                if (previousCred) {
+                    previousCred =JSON.parse(previousCred);
+                    credentials = {...previousCred,...credentials};
+                } 
+                localStorage.setItem("cred", JSON.stringify(credentials));
+                return true;
+            }
+        </script>
+    </body>
+    </html>

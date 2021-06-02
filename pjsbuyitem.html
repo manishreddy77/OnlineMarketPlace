@@ -1,0 +1,67 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>
+            Buy-Item The Mega Cart
+        </title>
+        <h1>Dear <b id="cname"></b> Welcome to Megacart</h1>
+    </head>
+<body>
+    <style>
+        body {
+            background:rosybrown; 
+            text-align:center;
+        }
+        #datee {
+            position: absolute;
+            top: -6px; 
+            right: 10px;
+        }
+        #logout {
+            position:absolute;
+            top: 4px; 
+            left:10px;
+        }
+    </style> 
+    <script>
+        let wname=localStorage.getItem("user");
+        console.log(name);
+        window.onload=function(){
+            document.getElementById("cname").innerHTML=wname;
+            let d=new Date(); 
+            console.log(d);
+            document.getElementById("datee").innerHTML=d;
+            let bag=localStorage.getItem("bag"); 
+            console.log(bag);
+            let container=document.getElementById("list");
+            let totalItems = 0;
+            let cost=0; 
+            if(bag){
+                bag= JSON.parse(bag);
+                totalItems= bag.length
+                bag.forEach(function(item, index){
+                    let listitem=document.createElement("li"); 
+                    listitem.innerText='Item '+item.itemName+ 'costing Rs.' +item.cost+' will be delivered in '+item.delivery+ '!!';
+                    container.appendChild(listitem); 
+                    cost+=item.cost;
+                    });
+                } 
+            document.getElementById("total").innerHTML='You have bought '+totalItems+ ' items'; 
+            document.getElementById("totalcost").innerHTML='Your total bill is Rs. '+cost; 
+        }
+        function logout() {
+            window.open('pjslogin1.html');
+            localStorage.removeItem("user");
+            localStorage.removeItem("bag");
+        } 
+    </script>
+        <p id="datee"></p>
+        <input type="submit" value="logout" id="logout" onclick="logout()"> 
+        <b id="total"></b><br>
+        <ul id="list">
+        </ul><br>
+        <b id="totalcost"></b>
+    </body>
+</html>
+
+
