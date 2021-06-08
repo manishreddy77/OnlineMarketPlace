@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            Buy-Item The Mega Cart
+            Order Details - The Mega Cart
         </title>
         <h1>Dear <b id="cname"></b> Welcome to Megacart</h1>
     </head>
@@ -25,32 +25,38 @@
     </style> 
     <script>
         let wname=localStorage.getItem("user");
-        console.log(name);
         window.onload=function(){
-            document.getElementById("cname").innerHTML=wname;
-            let d=new Date(); 
-            console.log(d);
-            document.getElementById("datee").innerHTML=d;
-            let bag=localStorage.getItem("bag"); 
-            console.log(bag);
-            let container=document.getElementById("list");
-            let totalItems = 0;
-            let cost=0; 
-            if(bag){
-                bag= JSON.parse(bag);
-                totalItems= bag.length
-                bag.forEach(function(item, index){
-                    let listitem=document.createElement("li"); 
-                    listitem.innerText='Item '+item.itemName+ 'costing Rs.' +item.cost+' will be delivered in '+item.delivery+ '!!';
-                    container.appendChild(listitem); 
-                    cost+=item.cost;
-                    });
-                } 
-            document.getElementById("total").innerHTML='You have bought '+totalItems+ ' items'; 
-            document.getElementById("totalcost").innerHTML='Your total bill is Rs. '+cost; 
+            if(wname){
+                document.getElementById("cname").innerHTML=wname;
+                let d=new Date(); 
+                console.log(d);
+                document.getElementById("datee").innerHTML=d;
+                let bag=localStorage.getItem("bag"); 
+                console.log(bag);
+                let container=document.getElementById("list");
+                let totalItems = 0;
+                let cost=0; 
+                if(bag){
+                    bag= JSON.parse(bag);
+                    totalItems= bag.length
+                    bag.forEach(function(item, index){
+                        let listitem=document.createElement("li");
+                        listitem.style.padding = 0;
+                        let spanItem=document.createElement("span");
+                        spanItem.innerText="Item \""+item.itemName+"\" costing Rs." +item.cost+" will be delivered in "+item.delivery+ "!! </span>";
+                        listitem.appendChild(spanItem);
+                        container.appendChild(listitem); 
+                        cost+=item.cost;
+                        });
+                    } 
+                document.getElementById("total").innerHTML='You have bought '+totalItems+ ' items'; 
+                document.getElementById("totalcost").innerHTML='Your total bill is Rs. '+cost; 
+            } else{
+                window.location.pathname = '/pjslogin1.html';
+            }
         }
         function logout() {
-            window.open('pjslogin1.html');
+            window.location.pathname='/pjslogin1.html';
             localStorage.removeItem("user");
             localStorage.removeItem("bag");
         } 
@@ -58,7 +64,7 @@
         <p id="datee"></p>
         <input type="submit" value="logout" id="logout" onclick="logout()"> 
         <b id="total"></b><br>
-        <ul id="list">
+        <ul id="list" style="margin-left: 30%;margin-right: 30%;">
         </ul><br>
         <b id="totalcost"></b>
     </body>

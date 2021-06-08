@@ -10,16 +10,20 @@
     <body>
         <script>
             let wname = localStorage.getItem("user");
-            console.log(wname);
-            window.onload = function () {
-                document.getElementById("cname").innerHTML= wname;
-                let d = new Date();
-                console.log(d);
-                document.getElementById("datee").innerHTML= d;
-            }
+                window.onload = function () {
+                    if(wname){
+                        document.getElementById("cname").innerHTML= wname;
+                        let d = new Date();
+                        console.log(d);
+                        document.getElementById("datee").innerHTML= d;
+                    } else{
+                        window.location.pathname= '/pjslogin1.html';
+                    }
+                }
             var bag = [];
             function imgclick(type) {
                 var obj = {};
+                alert("Item Added");
                 if (type == "cloth") {
                     obj.itemName = "Clothing";
                     obj.image ="./images/clothing.jpg";
@@ -54,12 +58,12 @@
                 }
             }
             function logout() {
-                window.open('pjslogin1.html');
+                window.location.pathname='/pjslogin1.html';
                 localStorage.removeItem("user");
                 localStorage.removeItem("bag");
             }
             function gotocart() {
-                window.open('pjsbuyitem.html')
+                window.location.pathname='/pjsbuyitem.html';
             }
         </script>
         <style>

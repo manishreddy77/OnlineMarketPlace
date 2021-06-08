@@ -20,10 +20,10 @@
     <body>
         <form>
             <div class="login">
-            Enter Username: <input type="text" placeholder="enter username" id="uname"required> <br><br> 
-            Enter Password: <input type="password" placeholder="enter password" id="pass" required> <br><br> 
-            <input type="submit" value="Login" onclick="store()"> <br><br> 
-            New user? Sign up Here !! <a href="pjssignup1.html" target="_blank">Sign Up</a>
+                Enter Username: <input type="text" placeholder="enter username" id="uname"required> <br><br> 
+                Enter Password: <input type="password" placeholder="enter password" id="pass" required> <br><br> 
+                <input type="submit" value="Login" onclick="store()"> <br><br> 
+                New user? Sign up Here !! <a href="pjssignup1.html" target="_self">Sign Up</a>     
             </div>
         </form>
         <script>
@@ -33,14 +33,13 @@
                 if(localStorage.getItem("cred")){
                     let creds=JSON.parse(localStorage.getItem("cred"));
                     if(pa==creds[user]) {
-                        //alert("login successful"); 
                         localStorage.setItem("user",user);
                         window.open("pjsmain1.html");
                         }else{
-                        console.log("wrong creds");
+                        alert("Please enter correct username or password");
                         }
                 }else{
-                    console.log("Not Registered");
+                    alert("Not Registered");
                 }
                 }
         </script>
