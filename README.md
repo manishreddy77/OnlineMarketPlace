@@ -24,7 +24,7 @@ Would display categories of items available in the online shopping application, 
 
 ### 4.BuyItem
 
-![Screenshot 1](screenshots/cart.png)
+![Screenshot 1](screenshots/Cart.png)
 
 Would display the list of items added in the cart by retrieving the associative array from the localStorage.
 
