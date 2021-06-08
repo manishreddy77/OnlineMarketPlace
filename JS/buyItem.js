@@ -17,7 +17,7 @@ window.onload=function(){
                 let listitem=document.createElement("li");
                 listitem.style.padding = 0;
                 let spanItem=document.createElement("span");
-                spanItem.innerText="Item \""+item.itemName+"\" costing Rs." +item.cost+" will be delivered in "+item.delivery+ "!! </span>";
+                spanItem.innerText="Item \""+item.itemName+"\" costing Rs." +item.cost+" will be delivered in "+item.delivery+ "!!";
                 listitem.appendChild(spanItem);
                 container.appendChild(listitem); 
                 cost+=item.cost;
