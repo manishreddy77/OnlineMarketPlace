@@ -1,13 +1,30 @@
 # OnlineMarketPlace
 
-MegaCart is an online shopping application, where users can buy various products based on their liking. In this application, the user needs to login to execute the user stories.
+MegaCart is an online shopping application that allows users to buy various products (from different categories) based on their liking. Users can login/sign up through simple and easy to use registration forms. After logging in , they can browse products and add them to their carts. Finally they can view their order for confirmation.
 
-Following are the user stories : 
+## User Flow
 
-login : Consists of a simple form, which can be used to validate user name and password and populate appropriate error message on the screen. 
+### 1.Login 
 
-sign-up : Consists of a simple form, which can be used to register them and populate appropriate error message on the screen. 
+![Screenshot 1](screenshots/Login.png)
+ 
+Consists of a simple form, which can be used to validate user name and password and populate appropriate error message on the screen. 
 
-main : Would display categories of items available in the online shopping application, and the user can select the item which can be added into the cart. 
+### 2.SignUp
 
-buy-item : Would display the list of items added in the cart by retrieving the associative array from the localStorage.
+![Screenshot 1](screenshots/SignUp.png)
+
+Consists of a simple form, which can be used to register them and populate appropriate error message on the screen. 
+
+### 3.Main
+
+![Screenshot 1](screenshots/HomePage.png) ![Screenshot 1](screenshots/ItemAdded.png)
+
+Would display categories of items available in the online shopping application, and the user can select the item which can be added into the cart. 
+
+### 4.BuyItem
+
+![Screenshot 1](screenshots/cart.png)
+
+Would display the list of items added in the cart by retrieving the associative array from the localStorage.
+
